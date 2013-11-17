@@ -6,7 +6,6 @@ function checkForEbayUrl(tabId, changeInfo, tab) {
   if (tab.url.indexOf('ebay.com/itm') > -1) {
 	// show page action
     chrome.pageAction.show(tabId);
-	chrome.pageAction.tommy = "test";
   }
 };
 
