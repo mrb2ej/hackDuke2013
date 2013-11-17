@@ -1,0 +1,21 @@
+{
+	"manifest_version": 2,
+	
+	"name": "eBit",
+	"description": "This extension allows users to purchase items from eBay using bitcoins from their CoinBase account.",
+	"version": "1.0",
+	
+	"background": { "scripts": ["background.js"] },
+	"options_page": "options.html",
+	"page_action" :
+	{
+		"default_icon" : "icon-19.png",
+		"default_title" : "eBit",
+		"default_popup": "popup.html"
+	},
+	"permissions" : [
+		"tabs",
+		"https://coinbase.com/",
+		"http://open.api.ebay.com/"
+	]
+}
