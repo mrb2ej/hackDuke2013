@@ -1,9 +1,9 @@
 
 // Get the user's CoinBase balance
-//xmlResponse = httpGet("https://coinbase.com/api/v1/account/balance?api_key="+localStorage['api_key']);
-//var parsedObject = JSON.parse(xmlResponse)
-//coinbaseBalance = parseFloat(parsedObject.amount);
-coinbaseBalance = 2.56;
+xmlResponse = httpGet("https://coinbase.com/api/v1/account/balance?api_key="+localStorage['api_key']);
+var parsedObject = JSON.parse(xmlResponse)
+coinbaseBalance = parseFloat(parsedObject.amount);
+//coinbaseBalance = 100.56;
 
 // Convert bitcoin balance to USD
 xmlResponse = httpGet("https://coinbase.com/api/v1/currencies/exchange_rates");
@@ -21,7 +21,6 @@ function getItemPrice(tab)
 	var noQueryVars = tab.url.substr(1, tab.url.indexOf("?"));
 	var itemid = noQueryVars.substring(noQueryVars.lastIndexOf("/")+1, noQueryVars.length-1);
 	
-	/*
 	xmlResponse = httpGet(createItemXMLRequest(itemid));
 	var priceString = "&Item(0).ConvertedCurrentPrice.Value=";
 	var holdString = xmlResponse.substr(xmlResponse.indexOf(priceString)+priceString.length);
@@ -29,8 +28,8 @@ function getItemPrice(tab)
 	holdString = holdString.substr(0, holdString.indexOf("&"));
 	
 	itemPrice = parseFloat(holdString);
-	*/
-	itemPrice = 1000;
+	
+
 	// check to see if user can afford the item
 	canAfford = (coinbaseBalanceConverted >= itemPrice)
 	var theDiv = document.getElementById("outputField");
@@ -64,8 +63,6 @@ document.getElementById('btnConfirm').onclick=function()
 	alert("Money transferred to your bank account");
 	
 };
-//document.getElementById('btnCancel').onclick=function(){alert("Purchase cancelled");};
-//<input type="button" id="btnCancel" value="Cancel Purchase" />
 
 function createItemXMLRequest(itemid)
 {
